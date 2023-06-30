@@ -1,16 +1,34 @@
-# address_book
+# Livro de endereços
 
-A new Flutter project.
+<br />
 
-## Getting Started
+Livro de endereços proposto pelo desafio AVA a seguir.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<br />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Crie um aplicativo seguindo a descrição abaixo: 
+
+- A primeira tela do app deve ser a de Login, caso o usuário já possua conta, basta informar e-mail e senha e logar na aplicação. Caso o  usuário não possua conta ele irá clicar na opção de Signup. 
+
+- A tela de signup deve conter os seguintes campos: Nome, E-Mail, Senha e Confirme a sua Senha. Uma vez o usuário cadastrado na aplicação, NÃO é necessário validação de conta através de e-mail, sms ou qualquer outra forma. 
+
+- Estando logado, na próxima tela o usuário pode cadastrar um ou mais endereços para ele com os seguintes campos: CEP, Rua,  Complemento, Bairro, Localidade, Estado (ex: SP). Ao informar o cep que deverá ser o primeiro campo do formulário é necessário usar a api  da viacep (https://viacep.com.br/) para preencher automaticamente os demais campos, que posteriormente podem ser alterados  manualmente pelo usuário. 
+
+- Cada usuário ao logar deve ver somente os endereços que ele cadastrou e deverá poder editar individualmente cada um deles. É necessário haver uma opção de troca de senha e também de logout. 
+
+Requisitos: 
+
+- O app deve ser feito em Flutter. 
+
+- Utilizar a base de dados SQLite. 
+
+- O app deverá ser buildado para .apk para Android. 
+
+Material de apoio: 
+
+- Lib do SQLite para Flutter: https://pub.dev/packages/sqflite 
+
+- Templates gratuitos do Figma que podem ser usados no app: https://www.figma.com/templates/ 
