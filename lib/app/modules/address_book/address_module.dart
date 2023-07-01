@@ -74,6 +74,7 @@ class AddressModule implements Module {
           'version': 1,
           'type': 'create',
           'sql': '''CREATE TABLE AddressBook (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                      userId INTEGER NOT NULL,
                       title TEXT,
                       zipCode INTEGER NOT NULL,
                       streetAddress TEXT NOT NULL,
@@ -83,10 +84,5 @@ class AddressModule implements Module {
                       city TEXT NOT NULL,
                       state TEXT NOT NULL) '''
         },
-        {
-          'version': 1,
-          'type': 'upgrade',
-          'sql': 'ALTER TABLE AddressBook ADD COLUMN userId INTEGER NOT NULL',
-        }
       ];
 }
