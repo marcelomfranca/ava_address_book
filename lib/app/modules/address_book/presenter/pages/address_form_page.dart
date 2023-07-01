@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../shared/widgets/base_button.dart';
 import '../../../../shared/widgets/custom_alert_dialog.dart';
-import '../../../../shared/widgets/form_fields/zip_code_form_field.dart';
 import '../../../../shared/widgets/form_fields/custom_text_form_field.dart';
+import '../../../../shared/widgets/form_fields/zip_code_form_field.dart';
 import '../../../../shared/widgets/loading_indicator.dart';
 import '../../../core/core_app.dart';
 import '../../../core/infra/themes/styles.dart';
@@ -86,6 +86,14 @@ class _AddressFormPageState extends State<AddressFormPage> with AddressDtoValida
     fieldStateController.text = viaCepDto.state;
   }
 
+  void clearFormWithViaCep() {
+    fieldStreetAddressController.text = '';
+    fieldAdditionalAddressController.text = '';
+    fieldDistrictController.text = '';
+    fieldCityController.text = '';
+    fieldStateController.text = '';
+  }
+
   void populateForm() {
     final address = widget.address;
 
@@ -131,7 +139,8 @@ class _AddressFormPageState extends State<AddressFormPage> with AddressDtoValida
               child: BlocConsumer<AddressRegisterController, AddressRegisterState>(
                 bloc: addressRegisterController,
                 listener: (context, state) {
-                  if (state is CepInfoState) populateFormWithViaCep(state.data);
+                  if (state is CepInfoState) return populateFormWithViaCep(state.data);
+                  if (state is GetCepInfoFailureState) return clearFormWithViaCep();
                 },
                 builder: (context, state) {
                   final waitingCepInfo = (state is GettingCepInfoState);

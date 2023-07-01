@@ -21,6 +21,8 @@ class GetAddressViaCepDataSourceImpl implements GetAddressViaCepDataSource {
 
     final data = jsonDecode(utf8.decode(response.bodyBytes));
 
+    if (data['erro'] == true) throw GetAddressViaCepException(code: response.statusCode.toString());
+
     return ViaCepAdapter.fromMap(data);
   }
 
