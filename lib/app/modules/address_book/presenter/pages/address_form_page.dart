@@ -245,7 +245,7 @@ class _AddressFormPageState extends State<AddressFormPage> with AddressDtoValida
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 25),
                       Builder(
                         builder: (context) {
                           var onTap = true;
@@ -262,8 +262,6 @@ class _AddressFormPageState extends State<AddressFormPage> with AddressDtoValida
                                 constraints: const BoxConstraints(minHeight: 50),
                                 child: Center(child: BaseButton(text: actionText, onTap: onTap ? validateForm : null)),
                               ),
-                              const SizedBox(height: 15),
-                              BaseButton(text: 'Voltar', onTap: context.pop),
                             ],
                           );
                         },
