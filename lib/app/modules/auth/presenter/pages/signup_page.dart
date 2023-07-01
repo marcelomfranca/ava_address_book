@@ -38,8 +38,8 @@ class _SignupPageState extends State<SignupPage> with UserDtoValidate {
 
     if (validated) {
       final userDto = UserDto(
-        name: fieldNameController.text,
-        email: fieldEMailController.text,
+        name: fieldNameController.text.trim(),
+        email: fieldEMailController.text.trim(),
         password: fieldPasswordController.text,
       );
 

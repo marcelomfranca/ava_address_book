@@ -59,14 +59,14 @@ class _AddressFormPageState extends State<AddressFormPage> with AddressDtoValida
       final userDto = AddressBookDto(
         id: widget.address?.id,
         userId: userId,
-        title: fieldTitleController.text,
-        zipCode: fieldZipCodeController.text,
-        streetAddress: fieldStreetAddressController.text,
-        streetAddressNumber: fieldNumberController.text,
-        additionalAddress: fieldAdditionalAddressController.text,
-        district: fieldDistrictController.text,
-        city: fieldCityController.text,
-        state: fieldStateController.text,
+        title: fieldTitleController.text.trim(),
+        zipCode: fieldZipCodeController.text.trim(),
+        streetAddress: fieldStreetAddressController.text.trim(),
+        streetAddressNumber: fieldNumberController.text.trim(),
+        additionalAddress: fieldAdditionalAddressController.text.trim(),
+        district: fieldDistrictController.text.trim(),
+        city: fieldCityController.text.trim(),
+        state: fieldStateController.text.trim(),
       );
 
       if (widget.address != null) {
