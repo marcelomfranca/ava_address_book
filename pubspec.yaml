@@ -1,7 +1,7 @@
 name: address_book
 description: Address Book.
 
-version: 1.0.3+3
+version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
