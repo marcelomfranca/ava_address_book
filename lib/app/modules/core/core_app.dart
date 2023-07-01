@@ -72,34 +72,38 @@ class CoreApp {
   }
 
   static Future<Database> initializeDataBase() async {
-    final db = await SQFLiteConfig.initialize((db, version) async {
-      for (var module in modules) {
-        if (module.sqlScript.isEmpty) continue;
-
-        debugPrint(module.name);
-
-        for (var sql in module.sqlScript) {
-          if ((sql['version'] == version)) {
-            await db.execute(sql['sql']);
-          }
-        }
-      }
-    }, (db, oldVersion, version) async {
-      if (oldVersion < version) {
+    try {
+      final db = await SQFLiteConfig.initialize((db, version) async {
         for (var module in modules) {
           if (module.sqlScript.isEmpty) continue;
 
           debugPrint(module.name);
 
           for (var sql in module.sqlScript) {
-            if ((sql['version'] == version) && sql['type'] == 'upgrade') {
+            if ((sql['version'] == version)) {
               await db.execute(sql['sql']);
             }
           }
         }
-      }
-    }, databaseName);
+      }, (db, oldVersion, version) async {
+        if (oldVersion < version) {
+          for (var module in modules) {
+            if (module.sqlScript.isEmpty) continue;
 
-    return db;
+            debugPrint(module.name);
+
+            for (var sql in module.sqlScript) {
+              if ((sql['version'] == version) && sql['type'] == 'upgrade') {
+                await db.execute(sql['sql']);
+              }
+            }
+          }
+        }
+      }, databaseName);
+
+      return db;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
